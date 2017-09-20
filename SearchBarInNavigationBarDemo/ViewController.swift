@@ -10,16 +10,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private weak var searchBar: UISearchBar?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = UIColor.orange
+        setupViews()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func setupViews() {
+        let button = UIButton()
+        button.setTitle("close", for: .normal)
+        button.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        
+        let searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        self.searchBar = searchBar
     }
-
-
+    
+    
+    @objc func pushViewController() {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = UIColor.green
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }
 
